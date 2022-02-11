@@ -1,4 +1,5 @@
 import React from 'react';
+import Navigation from './components/Navigation'
 import routes from './routes';  
 import './App.css';
 
@@ -9,13 +10,13 @@ function App() {
   return (
 
     <BrowserRouter>
-
+      <Navigation />
       <Routes> 
 
         {
-          routes.map((val) => {
+          routes.map((val,index) => {
             return (
-              <Route path = { val.path } element = { <val.element props = { val?.props } /> } />  
+              <Route key = { index } path = { val.path } element = { <val.element /> }  />
             )
           })
         }
