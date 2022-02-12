@@ -8,7 +8,7 @@ const Navigation: React.FC<INavigation> = (props) => {
   return (
     <Container>
      
-      <Navbar expand = 'md' > 
+      <Navbar expand = 'md' style = {{ height: '10vh' }} > 
 
         <NavbarBrand>TALKO</NavbarBrand>
         <Navbar.Toggle aria-controls = 'basic-navbar-nav'><i className = 'fas fa-bars' ></i></Navbar.Toggle>
