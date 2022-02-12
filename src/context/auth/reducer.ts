@@ -1,18 +1,27 @@
-import { IAuthState } from "../../interface/context/context";
+import { defaultIAuthState, IAuthState } from "../../interface/context/context";
 import { IReducer } from '../../interface/context/reducer'
 
 
 const reducer = (state: IAuthState, action: IReducer) => {
- 
-  switch(action.TYPE){
+  
+  const { USER,TOKEN } = action.PAYLOAD
+
+  switch(action.TYPE) {
+    
     case 'LOGIN': 
-      {
+      { 
         return {
-          USER: null,
-          TOKEN: '',
+          USER,
+          TOKEN,
           ONLINE: true
         }
       }
+
+    case 'LOGOUT':
+      {
+        return defaultIAuthState
+      }
+
     default: 
       {
         return state

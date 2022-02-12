@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
+import UserContext from "../../context/auth/context";
+
 import { Container,Spinner } from "react-bootstrap";
 
 export interface ILogin {}
 
 const Login: React.FC<ILogin> = (props) => {
+  const AuthContext = useContext(UserContext)
   const [ userData,setUserData ] = useState({
     email: '',
     password: ''
@@ -33,9 +36,10 @@ const Login: React.FC<ILogin> = (props) => {
         if(val.status === 200) 
         {
           val.json().then((res) => {
-            const { user,token } = res.message
-            console.log(user)
-            console.log(token)
+            const USER = res.message.user
+            const TOKEN = res.message.token
+            setError('')
+            AuthContext.userDispatch({ TYPE: 'LOGIN', PAYLOAD: { USER,TOKEN }  })
           }) 
         }
         else
