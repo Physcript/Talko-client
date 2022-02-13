@@ -1,6 +1,8 @@
 
 
+import ProtectedComponent from '../components/ProtectedComponent'
 import { IRoutes } from '../interface/routes'
+import HomePage from '../pages/HomePage'
 import MainPage from '../pages/MainPage'
 import RLPage from '../pages/RLPage'
 
@@ -11,6 +13,11 @@ const mainRoutes: IRoutes[] = [
     auth: false,
     element: MainPage
   },
+  {
+    path: '/home',
+    auth: true,
+    element: HomePage 
+  }
 
 ]
 

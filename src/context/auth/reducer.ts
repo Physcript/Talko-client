@@ -8,7 +8,10 @@ const reducer = (state: IAuthState, action: IReducer) => {
 
   switch(action.TYPE) {
     
-    case 'LOGIN': 
+    case 'LOGIN':
+
+      localStorage.setItem('Token',TOKEN ) 
+
       { 
         return {
           USER,

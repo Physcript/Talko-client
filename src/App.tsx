@@ -10,6 +10,8 @@ import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import { defaultIAuthState, IAuthContextState } from './interface/context/context';
 import { UserContextProvider } from './context/auth/context';
+import ProtectedComponent from './components/ProtectedComponent';
+
 
 function App() { 
   
@@ -27,8 +29,27 @@ function App() {
 
           {
             routes.map((val,index) => {
+              
+              if(val.auth)
+                {
+                  return (
+                    <Route 
+                      path = { val.path }
+                      key = { index }
+                      element = {
+                        <ProtectedComponent>
+                          <val.element /> 
+                        </ProtectedComponent>
+                      }
+                    />
+                  )
+                }
               return (
-                <Route key = { index } path = { val.path } element = { <val.element /> }  />
+                <Route 
+                  path = { val.path }
+                  key = { index }
+                  element = { <val.element /> }
+                />
               )
             })
           }

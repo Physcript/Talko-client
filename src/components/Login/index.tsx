@@ -1,5 +1,6 @@
 import React, { useState,useContext } from "react";
 import UserContext from "../../context/auth/context";
+import { useNavigate } from 'react-router-dom'
 
 import { Container,Spinner } from "react-bootstrap";
 
@@ -7,6 +8,7 @@ export interface ILogin {}
 
 const Login: React.FC<ILogin> = (props) => {
   const AuthContext = useContext(UserContext)
+  const navigate = useNavigate()
   const [ userData,setUserData ] = useState({
     email: '',
     password: ''
@@ -40,6 +42,7 @@ const Login: React.FC<ILogin> = (props) => {
             const TOKEN = res.message.token
             setError('')
             AuthContext.userDispatch({ TYPE: 'LOGIN', PAYLOAD: { USER,TOKEN }  })
+            navigate('/home')
           }) 
         }
         else
