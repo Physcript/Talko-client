@@ -10,7 +10,7 @@ const reducer = (state: IAuthState, action: IReducer) => {
     
     case 'LOGIN':
 
-      localStorage.setItem('Token',TOKEN ) 
+      localStorage.setItem('token',TOKEN ) 
 
       { 
         return {

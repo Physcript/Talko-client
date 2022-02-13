@@ -1,6 +1,7 @@
 import React, { useState,useContext } from "react";
 import UserContext from "../../context/auth/context";
 import { useNavigate } from 'react-router-dom'
+import socket from '../../sockets'
 
 import { Container,Spinner } from "react-bootstrap";
 
@@ -42,6 +43,7 @@ const Login: React.FC<ILogin> = (props) => {
             const TOKEN = res.message.token
             setError('')
             AuthContext.userDispatch({ TYPE: 'LOGIN', PAYLOAD: { USER,TOKEN }  })
+            socket.emit('login')
             navigate('/home')
           }) 
         }
