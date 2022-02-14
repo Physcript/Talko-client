@@ -22,22 +22,27 @@ const MainPage = (props: React.FunctionComponent<IMainPage>) => {
       navigate('/home') 
     }
     
-    if(token !== '')
+    if(token !== '' )
     {
-      fetchCredentials() 
+      fetchCredentials(token) 
+    }
+    else 
+    {
+      setLoading(false)
     }
 
   },[])  
 
-  const fetchCredentials = () => {
+  const fetchCredentials = (authToken: string) => {
 
+    console.log('credit')
 
     const token  = localStorage.getItem('Token') || ''
     const url = 'http://localhost:1337/api/authenticate'
     
     const request = new Request(url,{
       method: 'GET',
-      headers: { 'Content-Type': 'application/json', 'Token': token } 
+      headers: { 'Content-Type': 'application/json', 'Token': authToken } 
     })
     
     fetch(request)
@@ -58,7 +63,7 @@ const MainPage = (props: React.FunctionComponent<IMainPage>) => {
         {
           val.json().then((res) => {
             console.log('No credentials found')
-            localStorage.removeItem('token')
+
           })
         }
       })
