@@ -43,7 +43,7 @@ const Login: React.FC<ILogin> = (props) => {
             const TOKEN = res.message.token
             setError('')
             AuthContext.userDispatch({ TYPE: 'LOGIN', PAYLOAD: { USER,TOKEN }  })
-            socket.emit('login')
+            socket.emit('login', { USER } )
             navigate('/home')
           }) 
         }

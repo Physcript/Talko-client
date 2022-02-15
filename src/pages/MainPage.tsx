@@ -19,7 +19,7 @@ const MainPage = (props: React.FunctionComponent<IMainPage>) => {
     
     if(user)
     {
-      navigate('/home') 
+    
     }
     
     if(token !== '' )
@@ -55,7 +55,6 @@ const MainPage = (props: React.FunctionComponent<IMainPage>) => {
             const TOKEN = res.message.token
             
             AuthContext.userDispatch({ TYPE: 'LOGIN' , PAYLOAD: { USER,TOKEN } })
-            navigate('/home') 
 
           })  
         }

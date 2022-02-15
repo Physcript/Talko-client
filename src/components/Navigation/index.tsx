@@ -2,13 +2,13 @@ import React, { useState, useContext } from 'react'
 import { Container,Nav,Navbar,NavbarBrand } from "react-bootstrap"
 import { Link,useNavigate } from 'react-router-dom'
 import UserContext from '../../context/auth/context'
+import { defaultUser, IUser } from '../../interface/user'
 
 export interface INavigation {}
 
 const Navigation: React.FC<INavigation> = (props) => {
-
-  const navigate = useNavigate()
   const AuthContext = useContext(UserContext)
+  const navigate = useNavigate()
   const logoutHandler = (e: any) => {
     e.preventDefault() 
   } 
